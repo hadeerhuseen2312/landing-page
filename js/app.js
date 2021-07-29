@@ -81,13 +81,13 @@ function createUlElements(item){
   }
   function getMySection(){
 
-        Array.prototype.forEach.call(navBarItems, item => {
+        for(const item of navBarItems) {
         item.classList.remove('active-btn');
-        });
+        }
         
-        Array.prototype.forEach.call(sectionsList, sect => {
+        for(const sect of sectionsList){
         sect.classList.remove('active');
-        });
+        }
 
         this.classList.add('active-btn');
 
@@ -102,7 +102,7 @@ function createUlElements(item){
 
   function showMyMenue()
   {
-      var navBar=document.getElementById("navDiv");
+      let navBar=document.getElementById("navDiv");
       navBar.classList.toggle('show');
   }
 
