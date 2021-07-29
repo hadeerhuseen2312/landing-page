@@ -21,11 +21,11 @@ html
 }
 
 .active{
-   font-size: x-large;
+   font-size: larger;
 }
 
 .active-btn{
-    font-size: x-large;
+    font-size: larger;
     background-color:antiquewhite; 
     
 }
