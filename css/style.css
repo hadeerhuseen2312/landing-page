@@ -2,6 +2,9 @@ html
 {
     scroll-behavior: smooth;
 }
+.sec{
+    height: 300px;
+}
 .toggle-btn{
     width: 35px;
     position: absolute;
