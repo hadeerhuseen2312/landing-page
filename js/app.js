@@ -93,7 +93,7 @@ function createUlElements(item){
 
       let mySection=document.getElementById(this.innerText);
       mySection.classList.add('active');
-      mySection.scrollIntoView();
+      mySection.scrollIntoView({behavior: "smooth"});
 
 
       
