@@ -2,8 +2,34 @@ html
 {
     scroll-behavior: smooth;
 }
+body
+{
+    background: antiquewhite;
+}
 .sec{
     height: 300px;
+}
+#navUl
+{
+    list-style-type:none;
+    float:right;
+    font-size: larger;
+}
+#container
+{
+    margin:50px 50px;
+    background-color:white;
+    padding:25px;
+    border-radius:25px;
+}
+.anch{
+    width:20%;
+    text-decoration:none;
+    padding:10px;
+    border: solid #ffccff 2px;
+    border-radius:50px;
+    margin:3px;
+    color:black"
 }
 .toggle-btn{
     width: 35px;
@@ -22,6 +48,8 @@ html
 
 .active{
    font-size: larger;
+   background-color:antiquewhite;
+   border-radius:10px;
 }
 
 .active-btn{

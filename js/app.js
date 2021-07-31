@@ -1,29 +1,32 @@
 
 //global vars
-let Paragraphs=[];
-let icons=[];
-let navFragment=document.createDocumentFragment();
-let contentFragment=document.createDocumentFragment();
-let body=document.getElementsByTagName('body')[0];
-let container=document.getElementById("container");
-let nav=document.getElementById("navUl");
-let content=document.getElementById("contentDiv");
-//let sectionsList=document.getElementsByClassName("sec");
-let navBarItems=[];
-let sectionsList=content.children;
+let Paragraphs=[];//paragraphs of sections
+let icons=[];     //links of nav menue
+let navFragment=document.createDocumentFragment();//collect teh nav menue links
+let contentFragment=document.createDocumentFragment();//collect sections content 
+let nav=document.getElementById("navUl"); //nav menue unordered list 
+let content=document.getElementById("contentDiv");//sections content div
+let navBarItems=[]; //list of nav menue icons as nodes 
+let sectionsList=content.children;//list of sectoins 
 
 
 
 
 //project instructions
-//create nav menue
+
+//put sections header in icons list to create the nav menue with it, and sections body in [paragraphs] list to collect them. 
 for(const section of content.children)
 {
     icons.push(section.children[0].innerText)
     Paragraphs.push(section.children[1].innerText);
 }
+
+//create nav menue
 icons.forEach(createUlElements);
+
+//append the nav fragment to the nav div 
 nav.appendChild(navFragment);
+
 //create content
 content.appendChild(contentFragment);
 
@@ -33,13 +36,11 @@ content.appendChild(contentFragment);
 
 //functions
 function createUlElements(item,index){
-    let li =document.createElement("li");
+    let li =document.createElement("li");//li of nav ul
     let textnode;
-    let anchor=document.createElement("a"); 
-    let hr=document.createElement('hr');
-    anchor.style="width:20%; text-decoration:none;padding:10px;border: solid #ffccff 2px ;border-radius:50px;margin:3px;color:black";    
-    hr.style="border-width:2px;margin:50px auto;";
-
+    let anchor=document.createElement("a"); //link 
+    anchor.classList.add("anch");//add class to links    
+    
     //create a textnode with the content of section.
     textnode=document.createTextNode(Paragraphs[index]);
 
@@ -56,48 +57,40 @@ function createUlElements(item,index){
     //click listener
     anchor.addEventListener("click",getMySection); 
   }
-  function getMySection(){
 
-        for(const item of navBarItems) {
-        item.classList.remove('active-btn');
-        }
-        
-        for(const sect of sectionsList){
-        sect.classList.remove('active');
-        }
+  //call back function that invoked when any of nav menue link is clicked.
+  function getMySection()
+  {
+    let mySection=document.getElementById(this.innerText);
 
-        this.classList.add('active-btn');
+    //remove the active class from any link
+    for(const item of navBarItems) 
+    {
+     item.classList.remove('active-btn');
+    }
 
-      let mySection=document.getElementById(this.innerText);
-      mySection.classList.add('active');
-      mySection.scrollIntoView({behavior: "smooth"});
+    //remove active class from any section.
+    for(const sect of sectionsList)
+    {
+     sect.classList.remove('active');
+    }
 
+    //add active-btn class to clicked link
+    this.classList.add('active-btn');
 
-      
-      
-  } 
+    //add active class to the section has been refered by clicked link  
+    mySection.classList.add('active');
 
+    //when link been clicked scroll to its section smoothly.
+    mySection.scrollIntoView({behavior: "smooth"});   
+} 
+
+//a call back funtion that invoked in mobile/ tablet view to handel click event on (three line icon)that collect teh nav menue.
   function showMyMenue()
   {
-      let navBar=document.getElementById("navDiv");
-      navBar.classList.toggle('show');
+    let navBar=document.getElementById("navDiv");
+    navBar.classList.toggle('show');
   }
-
-  
-
-
-
-//style
-nav.style="list-style-type:none;float:right;font-size: larger";
-container.style="margin:50px 50px;background-color:white;padding:25px;border-radius:25px;";
-body.style='background: antiquewhite';
-document.getElementsByClassName("active").style="font-size:larger"
-
-
-
-
-
-
 
 
 
